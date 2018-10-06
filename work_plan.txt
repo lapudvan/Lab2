@@ -1,0 +1,23 @@
+input conditioning
+- complete module with synchronization, debouncing, and edge detection (1.5 hours, ~0.5 hour for each)
+- test bench (0.5 hour)
+- debugging (1 hour)
+- circuit diagrams (0.5 hour)
+- gate delay/wait time calculations (1 hour)
+
+shift register
+- complete module with four behaviors (2 hours, ~0.5 hour for each and research)
+- test bench (0.5 hour)
+- debugging (1 hour)
+- report writing (0.5 hour)
+
+midpoint fpga
+- loading to fpga and debugging any errors (0.5 hour)
+- testing by hand (0.5 hour coming up with test cases and recording them)
+
+spi memory
+- draw finite state machine (states, transitions, table with control signals) and get feedback from instructor (2 hours)
+- implement design (1 hour)
+- test bench (1 hour)
+- debugging (1 hour)
+- compiling report (2 hours)
