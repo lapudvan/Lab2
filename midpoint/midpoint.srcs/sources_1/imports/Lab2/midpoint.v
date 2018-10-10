@@ -85,7 +85,7 @@ module midpoint
 
 
     jkff1 src_sel(.trigger(clk), .j(btn[2]), .k(btn[1]), .q(res_sel));
-    mux2 #(4) output_select(.in0(pdout[3:0]), .in1(pdout[7:4]), .sel(res_sel), .out(led));
+    mux2 #(4) output_select(.in0(pdout[7:4]), .in1(pdout[3:0]), .sel(res_sel), .out(led));
 
     inputconditioner btn0sig(.clk(clk),
     			     .noisysignal(btn[0]),

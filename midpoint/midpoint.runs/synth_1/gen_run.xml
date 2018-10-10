@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1539209132">
+  <File Type="VDS-TIMING-PB" Name="midpoint_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="midpoint_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="midpoint.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="midpoint_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="midpoint_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="midpoint_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="midpoint.vds"/>
+  <File Type="REPORTS-TCL" Name="midpoint_reports.tcl"/>
+  <File Type="PA-TCL" Name="midpoint.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/Lab2/inputconditioner.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../inputconditioner.v"/>
+        <Attr Name="ImportTime" Val="1539132342"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Lab2/shiftregister.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../shiftregister.v"/>
+        <Attr Name="ImportTime" Val="1539207970"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Lab2/midpoint.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../midpoint.v"/>
+        <Attr Name="ImportTime" Val="1539208993"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="midpoint"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/comparch/ZYBO_Master.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../ZYBO_Master.xdc"/>
+        <Attr Name="ImportTime" Val="1498057292"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>
