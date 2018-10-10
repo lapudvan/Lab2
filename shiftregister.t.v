@@ -31,8 +31,12 @@ module testshiftregister();
     	// Your Test Code
         //$dumpfile("shiftregister.vcd");
         //$dumpvars();
-        parallelDataIn=8'b10001010; serialDataIn=1; peripheralClkEdge=0; parallelLoad=1; #50
-        parallelDataIn=8'b10001010; serialDataIn=1; peripheralClkEdge=1; parallelLoad=0; #50
+        // parallelDataIn=8'b10001010; #5
+        // serialDataIn=1; #5
+        // peripheralClkEdge=0; #5
+        //parallelLoad=1; #50
+        $display("i am alive");
+        //parallelDataIn=8'b10001010; serialDataIn=1; peripheralClkEdge=1; parallelLoad=0; #50
         //$finish();
     end
 

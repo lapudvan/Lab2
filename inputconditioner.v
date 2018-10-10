@@ -14,16 +14,6 @@ output reg  positiveedge = 0,   // 1 clk pulse at rising edge of conditioned
 output reg  negativeedge = 0    // 1 clk pulse at falling edge of conditioned
 );
 
-/*Modify the module so that the positiveedge and negativeedge output signals
-are correctly generated. These signals should be high for exactly one clock
-period when conditioned has a positive/negative edge, starting in the same
-clock period that conditioned transitions.
-
-Note: There are several possible ways to generate the edge signals.
-Remember that assign statements are continuous and operate on wires,
-while assignments in always blocks (e.g. nonblocking <=) operate on regs.
-*/
-
     parameter counterwidth = 3; // Counter size, in bits, >= log2(waittime)
     parameter waittime = 3;     // Debounce delay, in clock cycles
 
