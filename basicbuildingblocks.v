@@ -53,9 +53,9 @@ endmodule
 
 module tri_buf
 (
-    input   a;
-    output  b;
-    input   enable;
+    input   a,
+    output  b,
+    input   enable
 );
 
     assign b = (enable) ? a : 1'bz;

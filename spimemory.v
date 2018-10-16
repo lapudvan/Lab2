@@ -6,6 +6,7 @@
 `include "shiftregister.v"
 `include "basicbuildingblocks.v"
 `include "finitestatemachine.v"
+`include "datamemory.v"
 
 module spiMemory
 (
@@ -15,12 +16,12 @@ module spiMemory
     output          miso_pin,   // SPI master in slave out
     input           mosi_pin,   // SPI master out slave in
     output [3:0]    leds        // LEDs for debugging
-)
+);
 
     wire conditioned_mosi, rising_sclk, falling_sclk, conditioned_cs;           // wires from input conditioner
     wire rising_mosi, falling_mosi, conditioned_sclk, rising_cs, falling_cs;    // unused wires
     wire [7:0] datamem_out, shiftreg_out;
-    wire [6:0] address;
+    wire [7:0] address;
     wire serial_out, dff_out;
     wire MISO_BUFE, DM_WE, ADDR_WE, SR_WE;
 
@@ -52,7 +53,7 @@ module spiMemory
 
     datamemory datamem(.clk(clk),
                     .dataOut(datamem_out),
-                    .address(address),
+                    .address(address[6:0]),
                     .writeEnable(DM_WE),
                     .dataIn(shiftreg_out));
 

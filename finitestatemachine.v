@@ -10,41 +10,41 @@ module finitestatemachine
     input  rising_sclk,
     input  conditioned_cs,
     input  shiftreg_out,
-    output miso_bufe,
-    output dm_we,
-    output addr_we,
-    output sr_we
+    output reg miso_bufe,
+    output reg dm_we,
+    output reg addr_we,
+    output reg sr_we
 );
 
     reg [3:0] state;
     reg addr_counter, write_counter, read_counter;
 
     parameter IDLE = 0, GETTING_ADDRESS = 1, GOT_ADDRESS = 2, WRITING = 3,
-            READING_RETRIEVING = 4, READING_DISPLAYING = 5; DONE = 6;
+            READING_RETRIEVING = 4, READING_DISPLAYING = 5, DONE = 6;
 
     always @(state) begin
         case (state)
             IDLE:  begin
-                miso_bufe = 0; dm_we = 0; addr_we = 0; sr_we = 0;
-                addr_counter = 0, write_counter = 0, read_counter = 0;  // make sure that all counters reset to 0
+                miso_bufe <= 0; dm_we <= 0; addr_we <= 0; sr_we <= 0;
+                addr_counter <= 0; write_counter <= 0; read_counter <= 0;  // make sure that all counters reset to 0
             end
             GETTING_ADDRESS:  begin
-                miso_bufe = 0; dm_we = 0; addr_we = 0; sr_we = 0;
+                miso_bufe <= 0; dm_we <= 0; addr_we <= 0; sr_we <= 0;
             end
             GOT_ADDRESS:  begin
-                miso_bufe = 0; dm_we = 0; addr_we = 1; sr_we = 0;
+                miso_bufe <= 0; dm_we <= 0; addr_we <= 1; sr_we <= 0;
             end
             WRITING:  begin
-                miso_bufe = 0; dm_we = 1; addr_we = 0; sr_we = 0;
+                miso_bufe <= 0; dm_we <= 1; addr_we <= 0; sr_we <= 0;
             end
             READING_RETRIEVING:  begin
-                miso_bufe = 0; dm_we = 0; addr_we = 0; sr_we = 1;
+                miso_bufe <= 0; dm_we <= 0; addr_we <= 0; sr_we <= 1;
             end
             READING_DISPLAYING:  begin
-                miso_bufe = 1; dm_we = 0; addr_we = 0; sr_we = 0;
+                miso_bufe <= 1; dm_we <= 0; addr_we <= 0; sr_we <= 0;
             end
             DONE:  begin
-                miso_bufe = 0; dm_we = 0; addr_we = 0; sr_we = 0;
+                miso_bufe <= 0; dm_we <= 0; addr_we <= 0; sr_we <= 0;
             end
         endcase
     end
