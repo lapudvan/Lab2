@@ -24,21 +24,15 @@ module testConditioner();
     always #10 clk=!clk;    // 50MHz Clock
 
     initial begin
-    // Your Test Code
-    // Be sure to test each of the three conditioner functions:
-    // Synchronization, Debouncing, Edge Detection
-    $dumpfile("inputconditioner.vcd");
-    $dumpvars();
-    pin=0; #200
-    pin=1; #25
-    pin=0; #200
-    pin=1; #200
-    pin=0; #25
-    pin=1; #200
-    pin=0; #200
-    // if(conditioned != 1'b0)
-    // $display("ADD test 1 - carryout: %h, expected: 0", carryout);
-    // end
-    $finish();
+        $dumpfile("inputconditioner.vcd");
+        $dumpvars();
+        pin=0; #200
+        pin=1; #25
+        pin=0; #200
+        pin=1; #200
+        pin=0; #25
+        pin=1; #200
+        pin=0; #200
+        $finish();
     end
 endmodule

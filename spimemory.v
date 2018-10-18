@@ -14,14 +14,13 @@ module spiMemory
     input           sclk_pin,   // SPI clock
     input           cs_pin,     // SPI chip select
     output          miso_pin,   // SPI master in slave out
-    input           mosi_pin,   // SPI master out slave in
-    output [3:0]    leds        // LEDs for debugging
+    input           mosi_pin   // SPI master out slave in
 );
 
     wire conditioned_mosi, rising_sclk, falling_sclk, conditioned_cs;           // wires from input conditioner
     wire rising_mosi, falling_mosi, conditioned_sclk, rising_cs, falling_cs;    // unused wires
     wire [7:0] datamem_out, shiftreg_out;
-    wire [7:0] address;
+    wire [6:0] address;
     wire serial_out, dff_out;
     wire MISO_BUFE, DM_WE, ADDR_WE, SR_WE;
 
@@ -53,13 +52,13 @@ module spiMemory
 
     datamemory datamem(.clk(clk),
                     .dataOut(datamem_out),
-                    .address(address[6:0]),
+                    .address(address),
                     .writeEnable(DM_WE),
                     .dataIn(shiftreg_out));
 
-    dff #(8) addrlatch(.trigger(clk),
+    dff #(7) addrlatch(.trigger(clk),
                     .enable(ADDR_WE),
-                    .d(shiftreg_out),
+                    .d(shiftreg_out[7:1]),
                     .q(address));
 
     dff #(1) miso_dff(.trigger(clk),
