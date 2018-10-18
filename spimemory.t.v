@@ -31,6 +31,7 @@ module testSPIMemory();
         $display("state: %d, expected: 0 idle", dut.fsm.state);
 
         // GOOD WRITE TEST -----------------------------------------------------
+        $display("GOOD WRITE TEST STARTING");
 
         cs_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000     // chip select
         mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000   // addr
@@ -66,6 +67,7 @@ module testSPIMemory();
         $display("state: %d, expected: 0 idle", dut.fsm.state);
 
         // GOOD READ TEST ------------------------------------------------------
+        $display("GOOD READ TEST STARTING");
 
         cs_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000     // chip select
         mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000   // addr
@@ -107,6 +109,73 @@ module testSPIMemory();
 
         cs_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000     // chip deselect
         $display("state: %d, expected: 6 done", dut.fsm.state);
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+
+        // CHIP SELECT HIGH WRITE TEST -----------------------------------------------------
+        $display("CHIP SELECT HIGH WRITE TEST STARTING");
+
+        cs_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000     // chip select
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000   // addr
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000   // write
+
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000   // data
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+        cs_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000     // chip deselect
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+        // CHIP SELECT HIGH READ TEST ------------------------------------------------------
+        $display("CHIP SELECT HIGH READ TEST STARTING");
+
+        cs_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000     // chip select
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000   // addr
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 0; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+        mosi_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000   // read
+
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000                 // wait for spi to retrieve data
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000                 // clock to display data
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        sclk_pin = 0; #1000 sclk_pin = 1; #1000
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
+
+        cs_pin = 1; sclk_pin = 0; #1000 sclk_pin = 1; #1000     // chip deselect
+        $display("state: %d, expected: 0 idle", dut.fsm.state);
         sclk_pin = 0; #1000 sclk_pin = 1; #1000
         $display("state: %d, expected: 0 idle", dut.fsm.state);
 

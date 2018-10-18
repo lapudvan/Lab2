@@ -26,6 +26,7 @@ module testConditioner();
     initial begin
         $dumpfile("inputconditioner.vcd");
         $dumpvars();
+        $dipslay("check gtkwave for test results");
         pin=0; #200
         pin=1; #25
         pin=0; #200

@@ -56,7 +56,7 @@ module finitestatemachine
                 end
                 else if (conditioned_cs == 1) begin
                     state <= IDLE;
-                    addr_counter <= 0; write_counter <= 0, read_counter <= 0;
+                    addr_counter <= 0; write_counter <= 0; read_counter <= 0;
                 end
             end
 
